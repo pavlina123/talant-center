@@ -7,7 +7,7 @@ export default function Media() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await supabase.from('interesting').select('*').limit(3);
+      const { data } = await supabase.from('interesting').select('*').limit(6);
       if (data) setItems(data);
       setLoading(false);
     };
@@ -28,17 +28,17 @@ export default function Media() {
           <p className="text-gray-400 font-bold">Видео и фото скоро появятся.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
           {items.map(item => (
-            <div key={item.id} className="bg-white p-3 md:p-4 rounded-3xl shadow-sm border border-gray-100">
+            <div key={item.id} className="bg-white p-2 md:p-4 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100">
               {item.url.includes('youtube.com') || item.url.includes('youtu.be') ? (
-                 <div className="relative pt-[56.25%] rounded-2xl overflow-hidden">
+                 <div className="relative pt-[56.25%] rounded-xl md:rounded-2xl overflow-hidden">
                    <iframe src={item.url.replace('watch?v=', 'embed/')} className="absolute inset-0 w-full h-full" allowFullScreen title={item.title}></iframe>
                  </div>
               ) : (
-                <video src={item.url} controls className="w-full aspect-video object-cover rounded-2xl" />
+                <video src={item.url} controls className="w-full aspect-video object-cover rounded-xl md:rounded-2xl" />
               )}
-              <h3 className="font-black text-sm md:text-lg mt-3 md:mt-4 text-talant-dark text-center">{item.title}</h3>
+              <h3 className="font-black text-[10px] md:text-lg mt-2 md:mt-4 text-talant-dark text-center line-clamp-2">{item.title}</h3>
             </div>
           ))}
         </div>
