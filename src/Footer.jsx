@@ -1,6 +1,6 @@
 import React from 'react';
 import { waLink, PHONE_DISPLAY, INSTAGRAM_URL, WHATSAPP } from './theme';
-import logo from './assets/logoo.png'; 
+import logo from './assets/logo.png'; 
 
 export default function Footer() {
   return (
@@ -22,7 +22,7 @@ export default function Footer() {
           {/* Контакты */}
           <div className="text-center md:text-left">
             <h4 className="font-black text-lg text-talant-dark mb-4">Контакты</h4>
-            <p className="text-sm font-bold text-gray-500 mb-2">📍 г. Астана</p>
+            <p className="text-sm font-bold text-gray-500 mb-2">📍 ул. Кенесары 45, Астана</p>
             <a href={`tel:+${WHATSAPP}`} className="text-sm font-bold text-gray-500 mb-2 block hover:text-talant-green transition">📞 {PHONE_DISPLAY}</a>
             <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="text-sm font-bold text-gray-500 hover:text-talant-pink transition">📸 @centertalant</a>
           </div>

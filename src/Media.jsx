@@ -30,15 +30,31 @@ export default function Media() {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
           {items.map(item => (
-            <div key={item.id} className="bg-white p-2 md:p-4 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100">
-              {item.url.includes('youtube.com') || item.url.includes('youtu.be') ? (
-                 <div className="relative pt-[56.25%] rounded-xl md:rounded-2xl overflow-hidden">
-                   <iframe src={item.url.replace('watch?v=', 'embed/')} className="absolute inset-0 w-full h-full" allowFullScreen title={item.title}></iframe>
-                 </div>
-              ) : (
-                <video src={item.url} controls className="w-full aspect-video object-cover rounded-xl md:rounded-2xl" />
-              )}
-              <h3 className="font-black text-[10px] md:text-lg mt-2 md:mt-4 text-talant-dark text-center line-clamp-2">{item.title}</h3>
+            <div key={item.id} className="bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col group">
+              
+              {/* Длинная карточка (9:16) */}
+              <div className="relative w-full aspect-[9/16] bg-talant-bg overflow-hidden">
+                {item.url.includes('youtube.com') || item.url.includes('youtu.be') ? (
+                  <iframe 
+                    src={item.url.replace('watch?v=', 'embed/').replace('shorts/', 'embed/')} 
+                    className="absolute inset-0 w-full h-full" 
+                    allowFullScreen 
+                    title={item.title}
+                  ></iframe>
+                ) : (
+                  <video 
+                    src={item.url} 
+                    controls 
+                    className="w-full h-full object-cover" 
+                    preload="metadata"
+                  />
+                )}
+              </div>
+
+              {/* Название снизу */}
+              <div className="p-2 md:p-4 bg-white text-center border-t border-gray-50">
+                <h3 className="font-black text-[10px] md:text-sm text-talant-dark line-clamp-2">{item.title}</h3>
+              </div>
             </div>
           ))}
         </div>
