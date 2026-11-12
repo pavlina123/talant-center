@@ -28,48 +28,27 @@ export default function Prices({ onOpenPrice }) {
           <p className="text-gray-400 font-bold">Прайс-лист скоро обновится.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           {items.map(item => (
-            <div 
-              key={item.id} 
-              className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition duration-300 flex flex-col"
-            >
-              
-              {/* Квадратное/прямоугольное фото сверху */}
-              <div className="w-full h-56 bg-talant-bg overflow-hidden relative">
-                {item.photo ? (
-                  <img src={item.photo} alt={item.title} className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-6xl">📚</div>
-                )}
+            <div key={item.id} className="bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 flex flex-col">
+              <div className="w-full h-32 md:h-56 bg-talant-bg overflow-hidden relative">
+                {item.photo ? <img src={item.photo} alt={item.title} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-4xl md:text-6xl">📚</div>}
               </div>
-
-              {/* Контентная часть */}
-              <div className="p-6 flex flex-col flex-1 justify-between">
+              <div className="p-2 md:p-6 flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="font-black text-2xl text-talant-dark mb-3">{item.title}</h3>
-                  <p className="text-sm text-gray-500 mb-6 text-paragraphs">{item.description}</p>
+                  <h3 className="font-black text-xs md:text-2xl text-talant-dark mb-1 md:mb-3 line-clamp-2">{item.title}</h3>
+                  <p className="text-[10px] md:text-sm text-gray-500 mb-2 md:mb-6 text-paragraphs line-clamp-2 hidden md:block">{item.description}</p>
                 </div>
-                
                 <div>
-                  {/* Блок с ценой */}
-                  <div className="bg-talant-yellow/20 p-4 rounded-2xl border border-talant-yellow/50 mb-4 flex flex-col items-center justify-center">
-                    <span className="text-[10px] text-talant-dark/60 font-bold uppercase tracking-widest mb-1">Стоимость</span>
-                    <span className="text-xl md:text-2xl font-black text-talant-dark text-center">
-                      {item.price || 'По запросу'}
-                    </span>
+                  <div className="bg-talant-yellow/20 p-2 md:p-4 rounded-lg md:rounded-2xl border border-talant-yellow/50 mb-2 md:mb-4 flex flex-col items-center justify-center">
+                    <span className="text-[8px] md:text-[10px] text-talant-dark/60 font-bold uppercase tracking-widest mb-0.5 md:mb-1">Цена</span>
+                    <span className="text-xs md:text-xl font-black text-talant-dark text-center">{item.price || 'По запросу'}</span>
                   </div>
-
-                  {/* Кнопка */}
-                  <button 
-                    onClick={() => onOpenPrice(item)}
-                    className="w-full bg-talant-green text-white font-black py-3.5 rounded-xl hover:bg-green-500 transition shadow-md text-sm flex items-center justify-center gap-2"
-                  >
-                    Узнать подробнее →
+                  <button onClick={() => onOpenPrice(item)} className="w-full bg-talant-green text-white font-black py-1.5 md:py-3 rounded-lg md:rounded-xl hover:bg-green-500 transition shadow-md text-[10px] md:text-sm flex items-center justify-center gap-1 md:gap-2">
+                    Подробнее
                   </button>
                 </div>
               </div>
-
             </div>
           ))}
         </div>

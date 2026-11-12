@@ -7,7 +7,7 @@ export default function Announcements({ onOpenAnnouncement }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await supabase.from('announcements').select('*').order('created_at', { ascending: false }).limit(3);
+      const { data } = await supabase.from('announcements').select('*').order('created_at', { ascending: false }).limit(4);
       if (data) setItems(data);
       setLoading(false);
     };
@@ -28,38 +28,23 @@ export default function Announcements({ onOpenAnnouncement }) {
           <p className="text-gray-400 font-bold">Пока здесь пусто.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           {items.map(item => (
-            <div 
-              key={item.id} 
-              className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition duration-300 flex flex-col"
-            >
-              
-              {/* Длинное фото сверху */}
+            <div key={item.id} className="bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition duration-300 flex flex-col">
               <div className="w-full aspect-[4/5] bg-talant-bg overflow-hidden cursor-pointer" onClick={() => onOpenAnnouncement(item)}>
                 {item.cover_photo ? (
-                  <img 
-                    src={item.cover_photo} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover hover:scale-105 transition duration-700" 
-                  />
+                  <img src={item.cover_photo} alt={item.title} className="w-full h-full object-cover hover:scale-105 transition duration-700" />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-6xl">📰</div>
+                  <div className="w-full h-full flex items-center justify-center text-4xl">📰</div>
                 )}
               </div>
-
-              {/* Текст и кнопка (аккуратно ПОД фото) */}
-              <div className="p-5 flex flex-col flex-1 bg-white">
-                <h3 className="font-black text-lg text-talant-dark mb-2 leading-tight line-clamp-2">{item.title}</h3>
-                <p className="text-sm text-gray-500 line-clamp-2 mb-4 flex-1 text-paragraphs">{item.content}</p>
-                
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                  <span className="text-xs font-bold text-talant-green uppercase">Читать</span>
-                  <button 
-                    onClick={() => onOpenAnnouncement(item)}
-                    className="w-10 h-10 bg-talant-green text-white rounded-xl flex items-center justify-center hover:bg-green-500 hover:scale-110 transition-all shadow-md"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              <div className="p-2 md:p-5 flex flex-col flex-1 bg-white">
+                <h3 className="font-black text-xs md:text-lg text-talant-dark mb-1 md:mb-2 leading-tight line-clamp-2">{item.title}</h3>
+                <p className="text-[10px] md:text-sm text-gray-500 line-clamp-2 mb-2 md:mb-4 flex-1 text-paragraphs hidden md:block">{item.content}</p>
+                <div className="flex items-center justify-between mt-auto pt-2 md:pt-4 border-t border-gray-100">
+                  <span className="text-[10px] md:text-xs font-bold text-talant-green uppercase">Читать</span>
+                  <button onClick={() => onOpenAnnouncement(item)} className="w-7 h-7 md:w-10 md:h-10 bg-talant-green text-white rounded-lg md:rounded-xl flex items-center justify-center hover:bg-green-500 hover:scale-110 transition-all shadow-md">
+                    <svg className="w-3 h-3 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                   </button>
                 </div>
               </div>
