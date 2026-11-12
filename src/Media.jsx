@@ -17,7 +17,7 @@ export default function Media() {
   return (
     <section className="py-12">
       <h2 className="text-3xl font-black text-talant-dark mb-8 flex items-center gap-3">
-        <span className="text-4xl">🎬</span> Медиагалерея
+        <span className="text-4xl">🎬</span> Медиа-галерея
       </h2>
       
       {loading ? (
