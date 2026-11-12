@@ -30,7 +30,6 @@ export default function AdminPanel({ user, onLogout }) {
 
   const handleInputChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // Загрузка главного фото
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -46,7 +45,6 @@ export default function AdminPanel({ user, onLogout }) {
     setUploading(false);
   };
 
-  // Загрузка сертификатов (несколько фото)
   const handleGalleryUpload = async (e) => {
     const files = e.target.files;
     if (!files.length) return;
@@ -169,8 +167,6 @@ export default function AdminPanel({ user, onLogout }) {
                   { name: 'experience', label: 'Опыт' }, { name: 'photo', label: 'Главное фото', type: 'file' },
                   { name: 'description', label: 'Описание', type: 'textarea' }
                 ])}
-                
-                {/* БЛОК СЕРТИФИКАТОВ */}
                 <div className="bg-white p-6 rounded-3xl shadow-sm border border-talant-green/30 mb-8">
                   <h3 className="text-sm font-black mb-2">Сертификаты и дипломы (доп. фото)</h3>
                   <input type="file" multiple accept="image/*" onChange={handleGalleryUpload} className="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-talant-blue/20 file:text-talant-dark cursor-pointer" />
@@ -188,9 +184,12 @@ export default function AdminPanel({ user, onLogout }) {
             {activeTab === 'achievements' && (
               <>{renderForm('achievements', [{ name: 'title', label: 'Название', required: true }, { name: 'photo', label: 'Фото', type: 'file' }, { name: 'description', label: 'Описание', type: 'textarea' }])}{renderList(data.achievements, 'achievements', 'title')}</>
             )}
+            
+            {/* ПРАЙС (С ДОБАВЛЕННЫМ ФОТО) */}
             {activeTab === 'prices' && (
-              <>{renderForm('prices', [{ name: 'title', label: 'Название услуги', required: true }, { name: 'price', label: 'Цена' }, { name: 'description', label: 'Описание', type: 'textarea' }])}{renderList(data.prices, 'prices', 'title')}</>
+              <>{renderForm('prices', [{ name: 'title', label: 'Название услуги', required: true }, { name: 'price', label: 'Цена' }, { name: 'photo', label: 'Фото услуги', type: 'file' }, { name: 'description', label: 'Описание', type: 'textarea' }])}{renderList(data.prices, 'prices', 'title')}</>
             )}
+
             {activeTab === 'reviews' && (
               <>{renderForm('reviews', [{ name: 'author', label: 'Имя автора', required: true }, { name: 'text', label: 'Текст отзыва', type: 'textarea', required: true }])}{renderList(data.reviews, 'reviews', 'author')}</>
             )}
