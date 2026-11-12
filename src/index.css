@@ -5,13 +5,10 @@
   --font-sans: 'Nunito', sans-serif;
   --font-display: 'Comfortaa', sans-serif;
   
-  /* Основные цвета бренда */
   --color-talant-green: #7BD389;
   --color-talant-yellow: #FFD166;
   --color-talant-dark: #2b2d42;
   --color-talant-bg: #f8fdf8;
-  
-  /* Дополнительные цвета для карточек */
   --color-talant-blue: #A2D2FF;
   --color-talant-pink: #FFC8DD;
   --color-talant-purple: #CDB4DB;
@@ -28,20 +25,23 @@ h1, h2, h3, h4 {
   font-weight: 700;
 }
 
-/* Анимация появления (для карточек) */
+/* МАГИЯ ДЛЯ АБЗАЦЕВ (текст будет как ты ввела) */
+.text-paragraphs {
+  white-space: pre-wrap;
+  line-height: 1.8;
+}
+
 @keyframes popIn {
   0% { opacity: 0; transform: scale(0.9) translateY(10px); }
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 .animate-pop-in { animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 
-/* Анимация парения */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 .animate-float { animation: float 3s ease-in-out infinite; }
 
-/* Скрываем скроллбар */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
