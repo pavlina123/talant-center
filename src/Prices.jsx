@@ -28,20 +28,33 @@ export default function Prices({ onOpenPrice }) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           {items.map(item => (
             <div key={item.id} className="glass-card rounded-2xl md:rounded-3xl overflow-hidden transition duration-300 flex flex-col hover:-translate-y-1">
-              <div className="w-full h-32 md:h-56 bg-talant-bg overflow-hidden relative">
-                {item.photo ? <img src={item.photo} alt={item.title} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-4xl md:text-6xl text-talant-yellow">📚</div>}
+              
+              {/* Фото */}
+              <div className="w-full h-32 md:h-48 bg-talant-bg overflow-hidden relative">
+                {item.photo ? (
+                  <img src={item.photo} alt={item.title} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-4xl md:text-5xl text-talant-yellow">📚</div>
+                )}
               </div>
-              <div className="p-2 md:p-6 flex flex-col flex-1 justify-between bg-white/50">
+
+              {/* Текст и кнопка */}
+              <div className="p-3 md:p-5 flex flex-col flex-1 justify-between bg-white/50">
                 <div>
-                  <h3 className="font-black text-xs md:text-xl text-talant-dark mb-1 md:mb-3 line-clamp-2">{item.title}</h3>
-                  <p className="text-[10px] md:text-sm text-gray-500 mb-2 md:mb-6 text-paragraphs line-clamp-2 hidden md:block">{item.description}</p>
+                  <h3 className="font-black text-xs md:text-lg text-talant-dark mb-1 md:mb-2 line-clamp-2">{item.title}</h3>
+                  <p className="text-[10px] md:text-sm text-gray-500 mb-3 md:mb-4 text-paragraphs line-clamp-2 hidden md:block">{item.description}</p>
                 </div>
-                <div>
-                  <div className="bg-talant-yellow/20 p-2 md:p-4 rounded-lg md:rounded-2xl border border-talant-yellow/50 mb-2 md:mb-4 flex flex-col items-center justify-center">
-                    <span className="text-[8px] md:text-[10px] text-talant-brown font-bold uppercase tracking-widest mb-0.5 md:mb-1">Цена</span>
-                    <span className="text-xs md:text-lg font-black text-talant-dark text-center">{item.price || 'По запросу'}</span>
+                
+                <div className="mt-auto">
+                  {/* Аккуратная цена */}
+                  <div className="flex items-center gap-1 mb-2 md:mb-3">
+                    <span className="text-[9px] md:text-xs text-talant-brown font-bold uppercase">Цена:</span>
+                    <span className="text-xs md:text-sm font-black text-talant-green bg-talant-green/10 px-2 py-0.5 rounded-md">{item.price || 'По запросу'}</span>
                   </div>
-                  <button onClick={() => onOpenPrice(item)} className="btn-lux w-full bg-talant-green text-white font-black py-1.5 md:py-3 rounded-lg md:rounded-xl hover:bg-green-600 transition shadow-md text-[10px] md:text-sm flex items-center justify-center">Подробнее</button>
+                  
+                  <button onClick={() => onOpenPrice(item)} className="btn-lux w-full bg-talant-brown text-white font-black py-1.5 md:py-2.5 rounded-lg md:rounded-xl hover:bg-talant-dark transition shadow-md text-[10px] md:text-sm flex items-center justify-center">
+                    Подробнее
+                  </button>
                 </div>
               </div>
             </div>

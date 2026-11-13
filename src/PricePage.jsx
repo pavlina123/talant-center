@@ -7,39 +7,40 @@ export default function PricePage({ priceItem, onBack }) {
   return (
     <div className="min-h-screen bg-talant-bg py-8 px-4 animate-pop-in">
       <div className="max-w-4xl mx-auto">
-        <button onClick={onBack} className="mb-6 flex items-center gap-2 text-gray-500 hover:text-talant-dark font-bold transition">
+        <button onClick={onBack} className="mb-6 flex items-center gap-2 text-talant-brown hover:text-talant-dark font-bold transition">
           ← Назад ко всем услугам
         </button>
 
-        <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-talant-green/20 flex flex-col md:flex-row">
+        <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-talant-brown/10 flex flex-col md:flex-row">
+          
           {/* Фото */}
-          <div className="w-full md:w-1/2 h-64 md:h-auto bg-gray-100">
+          <div className="w-full md:w-1/2 h-64 md:h-auto bg-gray-100 relative">
             {priceItem.photo ? (
               <img src={priceItem.photo} alt={priceItem.title} className="w-full h-full object-cover" />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-8xl">📚</div>
+              <div className="w-full h-full flex items-center justify-center text-8xl text-talant-yellow">📚</div>
             )}
           </div>
 
           {/* Информация */}
-          <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-            <h1 className="text-3xl md:text-4xl font-black text-talant-dark mb-4">{priceItem.title}</h1>
+          <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
+            <h1 className="text-2xl md:text-4xl font-black text-talant-dark mb-4">{priceItem.title}</h1>
             
-            <div className="bg-talant-bg p-4 rounded-xl mb-6">
-              <p className="text-gray-600 leading-relaxed text-paragraphs">{priceItem.description || 'Описание пока не добавлено.'}</p>
-            </div>
+            <p className="text-gray-600 leading-relaxed text-paragraphs mb-6 text-sm md:text-base">
+              {priceItem.description || 'Описание пока не добавлено.'}
+            </p>
 
-            {/* Большая подсвеченная цена */}
-            <div className="bg-talant-yellow/20 p-6 rounded-2xl border-2 border-talant-yellow text-center mb-8 shadow-sm">
-              <span className="text-sm text-talant-dark font-bold uppercase block mb-1">Стоимость</span>
-              <span className="text-4xl font-black text-talant-dark">{priceItem.price || 'По запросу'}</span>
+            {/* Аккуратная цена */}
+            <div className="flex items-center gap-3 mb-8 bg-talant-green/10 p-4 rounded-2xl w-max">
+              <span className="text-sm font-bold text-talant-brown uppercase">Стоимость:</span>
+              <span className="text-xl md:text-2xl font-black text-talant-green">{priceItem.price || 'По запросу'}</span>
             </div>
 
             <a 
               href={waLink(`Хочу записаться на услугу: ${priceItem.title}`)} 
               target="_blank" 
               rel="noreferrer" 
-              className="block w-full bg-talant-green text-center text-white font-black py-4 rounded-xl hover:bg-green-500 transition shadow-lg text-lg"
+              className="block w-full bg-talant-brown text-center text-white font-black py-3.5 rounded-xl hover:bg-talant-dark transition shadow-lg text-base"
             >
               Записаться на услугу
             </a>

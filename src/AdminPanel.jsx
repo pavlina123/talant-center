@@ -38,9 +38,13 @@ export default function AdminPanel({ user, onLogout }) {
     const { error } = await supabase.storage.from('talant-media').upload(fileName, file);
     if (!error) {
       const { data: urlData } = supabase.storage.from('talant-media').getPublicUrl(fileName);
+      
+      // Сохраняем ссылку в нужное поле в зависимости от вкладки
       if (activeTab === 'announcements') setFormData(prev => ({ ...prev, cover_photo: urlData.publicUrl }));
       else if (activeTab === 'interesting') setFormData(prev => ({ ...prev, url: urlData.publicUrl }));
-      else setFormData(prev => ({ ...prev, photo: urlData.publicUrl }));
+      else setFormData(prev => ({ ...prev, photo: urlData.publicUrl })); // Для team, achievements и prices
+    } else {
+      alert('Ошибка загрузки: ' + error.message);
     }
     setUploading(false);
   };
@@ -184,12 +188,9 @@ export default function AdminPanel({ user, onLogout }) {
             {activeTab === 'achievements' && (
               <>{renderForm('achievements', [{ name: 'title', label: 'Название', required: true }, { name: 'photo', label: 'Фото', type: 'file' }, { name: 'description', label: 'Описание', type: 'textarea' }])}{renderList(data.achievements, 'achievements', 'title')}</>
             )}
-            
-            {/* ПРАЙС (С ДОБАВЛЕННЫМ ФОТО) */}
             {activeTab === 'prices' && (
               <>{renderForm('prices', [{ name: 'title', label: 'Название услуги', required: true }, { name: 'price', label: 'Цена' }, { name: 'photo', label: 'Фото услуги', type: 'file' }, { name: 'description', label: 'Описание', type: 'textarea' }])}{renderList(data.prices, 'prices', 'title')}</>
             )}
-
             {activeTab === 'reviews' && (
               <>{renderForm('reviews', [{ name: 'author', label: 'Имя автора', required: true }, { name: 'text', label: 'Текст отзыва', type: 'textarea', required: true }])}{renderList(data.reviews, 'reviews', 'author')}</>
             )}

@@ -27,19 +27,20 @@ export default function Achievements() {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           {items.map(item => (
-            <div key={item.id} className="group relative glass-card rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-300 flex flex-col">
-              <div className="relative w-full h-40 md:h-64 overflow-hidden bg-gray-100">
+            <div key={item.id} className="glass-card rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 flex flex-col">
+              
+              {/* Фото на всю карточку */}
+              <div className="relative w-full aspect-square overflow-hidden bg-gray-100">
                 {item.photo ? (
-                  <img src={item.photo} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                  <img src={item.photo} alt={item.title} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-4xl md:text-6xl text-talant-yellow">🏆</div>
+                  <div className="w-full h-full flex items-center justify-center text-6xl text-talant-yellow">🏆</div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
               </div>
-              <div className="p-3 md:p-6 flex flex-col flex-1 bg-gradient-to-b from-white/80 to-talant-yellow/10">
-                <h3 className="text-sm md:text-xl font-black text-talant-dark mb-1 md:mb-2 leading-tight line-clamp-2">{item.title}</h3>
-                <p className="text-[10px] md:text-sm text-gray-500 mb-2 md:mb-6 line-clamp-2 text-paragraphs flex-1 hidden md:block">{item.description}</p>
-                <button className="w-full bg-talant-bg text-talant-dark font-black py-1.5 md:py-3 rounded-lg md:rounded-xl text-[10px] md:text-sm hover:bg-talant-yellow transition shadow-sm border border-talant-yellow/30 flex items-center justify-center">Узнать всё</button>
+
+              {/* Только заголовок снизу, без кнопок */}
+              <div className="p-2 md:p-4 text-center bg-white/50">
+                <h3 className="font-black text-xs md:text-base text-talant-dark line-clamp-2">{item.title}</h3>
               </div>
             </div>
           ))}
