@@ -1,6 +1,6 @@
 import React from 'react';
 import { waLink } from './theme';
-import heroVideo from './assets/heroo.mp4'; // <--- Твое видео
+import heroVideo from './assets/heroo.mp4';
 
 import Announcements from './Announcements';
 import Achievements from './Achievements';
@@ -11,12 +11,10 @@ import Media from './Media';
 
 export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onOpenPrice }) {
   return (
-    <div className="min-h-[85vh] flex flex-col items-center justify-start px-4 py-10 relative overflow-hidden">
+    <div className="min-h-[85vh] flex flex-col items-center justify-start px-4 py-10 relative bg-transparent z-10">
       
-      {/* HERO SECTION (Видео и кнопки) */}
+      {/* HERO SECTION */}
       <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10 mb-16">
-        
-        {/* Текст */}
         <div className="text-center md:text-left order-2 md:order-1">
           <h1 className="text-4xl md:text-5xl font-black text-talant-dark mb-4 leading-tight">
             Раскрываем таланты <br/>
@@ -26,18 +24,16 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
             Центр развития "Талант" — это уютное место, где дети учат языки, занимаются актерским мастерством и раскрывают свои лучшие качества.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-            <a href={waLink()} target="_blank" rel="noreferrer" className="bg-talant-green text-white px-6 py-3.5 rounded-xl font-black text-base shadow-lg hover:-translate-y-1 transition-all">
+            <a href={waLink()} target="_blank" rel="noreferrer" className="btn-lux bg-talant-green text-white px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all">
               Записаться на консультацию
             </a>
-            <button onClick={() => onNavigate('prices')} className="bg-talant-yellow text-talant-dark px-6 py-3.5 rounded-xl font-black text-base shadow-lg hover:-translate-y-1 transition-all">
+            <button onClick={() => onNavigate('prices')} className="btn-lux bg-talant-yellow text-talant-dark px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all">
               Узнать о занятиях
             </button>
           </div>
         </div>
-
-        {/* Видео */}
         <div className="order-1 md:order-2 flex justify-center">
-          <div className="relative w-full max-w-sm md:max-w-md aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-gray-100">
+          <div className="relative w-full max-w-sm md:max-w-md aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50 bg-gray-100/50 backdrop-blur-sm">
             <video src={heroVideo} autoPlay loop muted playsInline className="w-full h-full object-cover" />
           </div>
         </div>

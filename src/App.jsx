@@ -5,7 +5,7 @@ import Login from './Login';
 import AdminPanel from './AdminPanel';
 import TeamPage from './TeamPage';
 import AnnouncementPage from './AnnouncementPage';
-import PricePage from './PricePage'; // <--- Импорт
+import PricePage from './PricePage';
 import Footer from './Footer';
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
 
   const [selectedMember, setSelectedMember] = useState(null);
   const [selectedAnnouncement, setSelectedAnnouncement] = useState(null);
-  const [selectedPrice, setSelectedPrice] = useState(null); // <--- Новый стейт
+  const [selectedPrice, setSelectedPrice] = useState(null);
 
   useEffect(() => {
     const savedRole = localStorage.getItem('talant_role');
@@ -42,20 +42,20 @@ export default function App() {
 
   const openMember = (member) => { setSelectedMember(member); setCurrentPage('team-page'); window.scrollTo(0, 0); };
   const openAnnouncement = (ann) => { setSelectedAnnouncement(ann); setCurrentPage('announcement-page'); window.scrollTo(0, 0); };
-  const openPrice = (priceItem) => { setSelectedPrice(priceItem); setCurrentPage('price-page'); window.scrollTo(0, 0); }; // <--- Функция
+  const openPrice = (priceItem) => { setSelectedPrice(priceItem); setCurrentPage('price-page'); window.scrollTo(0, 0); };
 
   if (user?.role === 'admin') return <AdminPanel user={user} onLogout={handleLogout} />;
 
   return (
-    <div className="min-h-screen bg-talant-bg text-talant-dark font-sans flex flex-col">
+    <div className="min-h-screen bg-transparent text-talant-dark font-sans flex flex-col relative">
       <Header onLoginClick={() => setShowLogin(true)} />
       
-      <main className="flex-1 relative">
+      <main className="flex-1 relative z-10">
         {currentPage === 'home' && <Home onNavigate={setCurrentPage} onOpenMember={openMember} onOpenAnnouncement={openAnnouncement} onOpenPrice={openPrice} />}
         
         {currentPage === 'team-page' && selectedMember && <TeamPage member={selectedMember} onBack={() => setCurrentPage('home')} />}
         {currentPage === 'announcement-page' && selectedAnnouncement && <AnnouncementPage announcement={selectedAnnouncement} onBack={() => setCurrentPage('home')} />}
-        {currentPage === 'price-page' && selectedPrice && <PricePage priceItem={selectedPrice} onBack={() => setCurrentPage('home')} />} {/* <--- Роутинг */}
+        {currentPage === 'price-page' && selectedPrice && <PricePage priceItem={selectedPrice} onBack={() => setCurrentPage('home')} />}
 
         {currentPage !== 'home' && currentPage !== 'team-page' && currentPage !== 'announcement-page' && currentPage !== 'price-page' && (
           <div className="flex flex-col items-center justify-center h-[70vh]">
