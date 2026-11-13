@@ -56,8 +56,6 @@ export default function App() {
         {currentPage === 'team-page' && selectedMember && <TeamPage member={selectedMember} onBack={() => setCurrentPage('home')} />}
         {currentPage === 'announcement-page' && selectedAnnouncement && <AnnouncementPage announcement={selectedAnnouncement} onBack={() => setCurrentPage('home')} />}
         {currentPage === 'price-page' && selectedPrice && <PricePage priceItem={selectedPrice} onBack={() => setCurrentPage('home')} />}
-
-        {/* Убрали заглушку, чтобы ничего не перекидывало */}
       </main>
 
       <Footer />

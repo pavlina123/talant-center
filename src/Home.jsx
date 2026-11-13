@@ -58,7 +58,7 @@ export default function Home({ onOpenMember, onOpenAnnouncement, onOpenPrice }) 
                 Записаться на консультацию
               </a>
               
-              {/* КНОПКА-ЯКОРЬ: плавно прокручивает к ценам */}
+              {/* Кнопка-якорь для прокрутки вниз */}
               <a href="#prices" className="btn-lux bg-talant-yellow text-talant-dark px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all text-center">
                 Узнать о занятиях
               </a>
@@ -84,7 +84,7 @@ export default function Home({ onOpenMember, onOpenAnnouncement, onOpenPrice }) 
           <div className="max-w-6xl mx-auto px-4"><Team onOpenMember={onOpenMember} /></div>
         </div>
 
-        {/* ID="PRICES" ДЛЯ ПРОКРУТКИ */}
+        {/* Секция с ценами и ID для прокрутки */}
         <div id="prices" className="bg-white/30 backdrop-blur-sm border-y border-talant-brown/5 py-8 scroll-mt-24">
           <div className="max-w-6xl mx-auto px-4"><Prices onOpenPrice={onOpenPrice} /></div>
         </div>
