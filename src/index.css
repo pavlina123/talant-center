@@ -5,12 +5,11 @@
   --font-sans: 'Nunito', sans-serif;
   --font-display: 'Comfortaa', sans-serif;
   
-  /* Обновленная палитра: зеленый, желтый, коричневый */
   --color-talant-green: #7BD389;
   --color-talant-yellow: #FFD166;
-  --color-talant-brown: #8B5A2B; /* Нежный коричневый */
-  --color-talant-dark: #3E2723; /* Темно-коричневый для текста */
-  --color-talant-bg: #fdfbf7; /* Теплый кремовый фон */
+  --color-talant-brown: #8B5A2B; 
+  --color-talant-dark: #3E2723; 
+  --color-talant-bg: #fdfbf7; 
 }
 
 body {
@@ -22,6 +21,7 @@ body {
   background-size: 30px 30px;
 }
 
+/* Плавающие цветные пятна (сзади всего) */
 body::before,
 body::after {
   content: "";
@@ -66,14 +66,13 @@ h1, h2, h3, h4 {
   line-height: 1.8;
 }
 
-/* Новый стиль заголовков (по центру, без эмодзи) */
 .title-lux {
   background: linear-gradient(135deg, #3E2723 0%, #8B5A2B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: block;
-  text-align: center; /* Выравнивание по центру */
+  text-align: center; 
   position: relative;
   margin-bottom: 2rem;
 }
@@ -94,7 +93,7 @@ h1, h2, h3, h4 {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(139, 90, 43, 0.1); /* Легкая коричневая рамка */
+  border: 1px solid rgba(139, 90, 43, 0.1); 
   box-shadow: 0 8px 32px 0 rgba(139, 90, 43, 0.05);
 }
 
@@ -129,3 +128,17 @@ h1, h2, h3, h4 {
   50% { transform: translateY(-10px); }
 }
 .animate-float { animation: float 3s ease-in-out infinite; }
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Анимация моргания для WhatsApp */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); }
+  50% { transform: scale(1.05); }
+  70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1); }
+}
+.animate-whatsapp-pulse {
+  animation: pulseGlow 2s infinite;
+}
