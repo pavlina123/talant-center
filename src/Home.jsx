@@ -18,17 +18,46 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
       <section className="w-full max-w-6xl mx-auto px-4 py-12 md:py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           
-          {/* Левая часть: Текст и кнопки */}
-          <div className="text-center md:text-left order-2 md:order-1">
-            <h1 className="text-4xl md:text-5xl font-black text-talant-dark mb-4 leading-tight">
-              Раскрываем таланты <br/>
-              <span className="text-talant-green">в каждом ребенке</span>
-            </h1>
-            <p className="text-lg text-gray-600 mb-8 font-medium">
-              Детский центр "Талант" в Астане — это уютное место, где дети учат языки, занимаются творчеством и раскрывают свои лучшие качества.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-              <a href={waLink()} target="_blank" rel="noreferrer" className="btn-lux bg-talant-green text-white px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all">
+          {/* Левая часть: Блок с цифрами и кнопки */}
+          <div className="order-2 md:order-1">
+            
+            {/* НОВЫЙ БЛОК ВМЕСТО СТАРОГО ТЕКСТА */}
+            <div className="bg-talant-green/10 border border-talant-green/20 backdrop-blur-md rounded-3xl p-6 md:p-8 text-center shadow-sm mb-6">
+              <h2 className="text-xl md:text-2xl font-black text-talant-dark mb-1">ТАЛАНТ</h2>
+              <p className="text-xs md:text-sm text-talant-green font-bold mb-4">Студия гармоничного развития детей</p>
+              
+              <h1 className="text-lg md:text-xl font-black text-talant-dark mb-3 leading-relaxed">
+                Раскрываем таланты. <br/>
+                Поддерживаем детство. <br/>
+                Помогаем семьям.
+              </h1>
+              
+              <p className="text-gray-600 text-xs md:text-sm mb-6 max-w-sm mx-auto">
+                Пространство, где каждый ребёнок развивается в своём темпе, открывает способности и верит в себя.
+              </p>
+
+              <hr className="border-talant-green/20 mb-6 w-3/4 mx-auto" />
+
+              {/* Цифры */}
+              <div className="grid grid-cols-3 gap-2">
+                <div>
+                  <div className="text-2xl md:text-3xl font-black text-talant-green mb-1">15+</div>
+                  <div className="text-[10px] md:text-xs text-gray-500 font-bold">лет опыта</div>
+                </div>
+                <div>
+                  <div className="text-2xl md:text-3xl font-black text-talant-green mb-1">15+</div>
+                  <div className="text-[10px] md:text-xs text-gray-500 font-bold">направлений</div>
+                </div>
+                <div>
+                  <div className="text-2xl md:text-3xl font-black text-talant-green mb-1">100%</div>
+                  <div className="text-[10px] md:text-xs text-gray-500 font-bold">внимания</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Кнопки под блоком */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a href={waLink()} target="_blank" rel="noreferrer" className="btn-lux bg-talant-green text-white px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all text-center">
                 Записаться на консультацию
               </a>
               <button onClick={() => onNavigate('prices')} className="btn-lux bg-talant-yellow text-talant-dark px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all">
@@ -44,41 +73,6 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
             </div>
           </div>
         </div>
-
-        {/* НОВЫЙ БЛОК С ЦИФРАМИ (КАК НА ФОТО) */}
-        <div className="mt-12 md:mt-16 bg-talant-green/10 border border-talant-green/20 backdrop-blur-md rounded-[2.5rem] p-8 md:p-10 text-center max-w-4xl mx-auto shadow-sm">
-          <h2 className="text-2xl md:text-3xl font-black text-talant-dark mb-2">ТАЛАНТ</h2>
-          <p className="text-sm md:text-base text-talant-green font-bold mb-6">Студия гармоничного развития детей</p>
-          
-          <h3 className="text-lg md:text-xl font-black text-talant-dark mb-4 leading-relaxed">
-            Раскрываем таланты. <br className="hidden md:block" />
-            Поддерживаем детство. <br className="hidden md:block" />
-            Помогаем семьям.
-          </h3>
-          
-          <p className="text-gray-600 text-xs md:text-sm mb-8 max-w-lg mx-auto">
-            Пространство, где каждый ребёнок развивается в своём темпе, открывает способности и верит в себя.
-          </p>
-
-          <hr className="border-talant-green/20 mb-8 w-3/4 mx-auto" />
-
-          {/* Статистика */}
-          <div className="grid grid-cols-3 gap-4">
-            <div>
-              <div className="text-3xl md:text-5xl font-black text-talant-green mb-1">15+</div>
-              <div className="text-xs md:text-sm text-gray-500 font-medium">лет опыта</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-5xl font-black text-talant-green mb-1">15+</div>
-              <div className="text-xs md:text-sm text-gray-500 font-medium">направлений</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-5xl font-black text-talant-green mb-1">100%</div>
-              <div className="text-xs md:text-sm text-gray-500 font-medium">внимания<br/>к ребёнку</div>
-            </div>
-          </div>
-        </div>
-
       </section>
 
       {/* ОСТАЛЬНЫЕ СЕКЦИИ */}
