@@ -21,7 +21,7 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
           {/* Левая часть: Блок с цифрами и кнопки */}
           <div className="order-2 md:order-1">
             
-            {/* НОВЫЙ БЛОК ВМЕСТО СТАРОГО ТЕКСТА */}
+            {/* Блок с цифрами */}
             <div className="bg-talant-green/10 border border-talant-green/20 backdrop-blur-md rounded-3xl p-6 md:p-8 text-center shadow-sm mb-6">
               <h2 className="text-xl md:text-2xl font-black text-talant-dark mb-1">ТАЛАНТ</h2>
               <p className="text-xs md:text-sm text-talant-green font-bold mb-4">Студия гармоничного развития детей</p>
@@ -38,7 +38,6 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
 
               <hr className="border-talant-green/20 mb-6 w-3/4 mx-auto" />
 
-              {/* Цифры */}
               <div className="grid grid-cols-3 gap-2">
                 <div>
                   <div className="text-2xl md:text-3xl font-black text-talant-green mb-1">15+</div>
@@ -55,18 +54,19 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
               </div>
             </div>
 
-            {/* Кнопки под блоком */}
+            {/* Кнопки */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a href={waLink()} target="_blank" rel="noreferrer" className="btn-lux bg-talant-green text-white px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all text-center">
                 Записаться на консультацию
               </a>
-              <button onClick={() => onNavigate('prices')} className="btn-lux bg-talant-yellow text-talant-dark px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all">
+              {/* ИЗМЕНИЛИ КНОПКУ НА ЯКОРЬ */}
+              <a href="#prices" className="btn-lux bg-talant-yellow text-talant-dark px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all text-center">
                 Узнать о занятиях
-              </button>
+              </a>
             </div>
           </div>
 
-          {/* Правая часть: Видео с ежиком */}
+          {/* Правая часть: Видео */}
           <div className="order-1 md:order-2 flex justify-center">
             <div className="relative w-full max-w-sm md:max-w-md aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50 bg-gray-100/50 backdrop-blur-sm">
               <video src={heroVideo} autoPlay loop muted playsInline className="w-full h-full object-cover" />
@@ -85,7 +85,8 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
           <div className="max-w-6xl mx-auto px-4"><Team onOpenMember={onOpenMember} /></div>
         </div>
 
-        <div className="bg-white/30 backdrop-blur-sm border-y border-talant-brown/5 py-8">
+        {/* ДОБАВИЛИ ID="PRICES" ДЛЯ ПРОКРУТКИ */}
+        <div id="prices" className="bg-white/30 backdrop-blur-sm border-y border-talant-brown/5 py-8 scroll-mt-24">
           <div className="max-w-6xl mx-auto px-4"><Prices onOpenPrice={onOpenPrice} /></div>
         </div>
 

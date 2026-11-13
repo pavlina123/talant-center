@@ -12,6 +12,11 @@
   --color-talant-bg: #fdfbf7; 
 }
 
+/* ПЛАВНАЯ ПРОКРУТКА */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--color-talant-bg);
   color: var(--color-talant-dark);
