@@ -16,15 +16,12 @@ export default function Prices({ onOpenPrice }) {
 
   return (
     <section className="py-12">
-      <h2 className="text-3xl md:text-4xl font-black title-lux mb-10">
-        <span className="mr-3">💰</span> Наши услуги и цены
-      </h2>
+      <h2 className="text-3xl md:text-4xl font-black title-lux">Наши услуги и цены</h2>
       
       {loading ? (
         <div className="text-center py-10 text-gray-400 font-bold">Загрузка...</div>
       ) : items.length === 0 ? (
         <div className="bg-white p-10 rounded-3xl border-2 border-dashed border-gray-200 text-center">
-          <span className="text-5xl block mb-4">💰</span>
           <p className="text-gray-400 font-bold">Прайс-лист скоро обновится.</p>
         </div>
       ) : (
@@ -32,7 +29,7 @@ export default function Prices({ onOpenPrice }) {
           {items.map(item => (
             <div key={item.id} className="glass-card rounded-2xl md:rounded-3xl overflow-hidden transition duration-300 flex flex-col hover:-translate-y-1">
               <div className="w-full h-32 md:h-56 bg-talant-bg overflow-hidden relative">
-                {item.photo ? <img src={item.photo} alt={item.title} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-4xl md:text-6xl">📚</div>}
+                {item.photo ? <img src={item.photo} alt={item.title} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-4xl md:text-6xl text-talant-yellow">📚</div>}
               </div>
               <div className="p-2 md:p-6 flex flex-col flex-1 justify-between bg-white/50">
                 <div>
@@ -41,12 +38,10 @@ export default function Prices({ onOpenPrice }) {
                 </div>
                 <div>
                   <div className="bg-talant-yellow/20 p-2 md:p-4 rounded-lg md:rounded-2xl border border-talant-yellow/50 mb-2 md:mb-4 flex flex-col items-center justify-center">
-                    <span className="text-[8px] md:text-[10px] text-talant-dark/60 font-bold uppercase tracking-widest mb-0.5 md:mb-1">Цена</span>
+                    <span className="text-[8px] md:text-[10px] text-talant-brown font-bold uppercase tracking-widest mb-0.5 md:mb-1">Цена</span>
                     <span className="text-xs md:text-lg font-black text-talant-dark text-center">{item.price || 'По запросу'}</span>
                   </div>
-                  <button onClick={() => onOpenPrice(item)} className="btn-lux w-full bg-talant-green text-white font-black py-1.5 md:py-3 rounded-lg md:rounded-xl hover:bg-green-500 transition shadow-md text-[10px] md:text-sm flex items-center justify-center gap-1 md:gap-2">
-                    Подробнее
-                  </button>
+                  <button onClick={() => onOpenPrice(item)} className="btn-lux w-full bg-talant-green text-white font-black py-1.5 md:py-3 rounded-lg md:rounded-xl hover:bg-green-600 transition shadow-md text-[10px] md:text-sm flex items-center justify-center">Подробнее</button>
                 </div>
               </div>
             </div>

@@ -5,34 +5,30 @@
   --font-sans: 'Nunito', sans-serif;
   --font-display: 'Comfortaa', sans-serif;
   
+  /* Обновленная палитра: зеленый, желтый, коричневый */
   --color-talant-green: #7BD389;
   --color-talant-yellow: #FFD166;
-  --color-talant-dark: #2b2d42;
-  --color-talant-bg: #f8fdf8;
-  --color-talant-blue: #A2D2FF;
-  --color-talant-pink: #FFC8DD;
-  --color-talant-purple: #CDB4DB;
+  --color-talant-brown: #8B5A2B; /* Нежный коричневый */
+  --color-talant-dark: #3E2723; /* Темно-коричневый для текста */
+  --color-talant-bg: #fdfbf7; /* Теплый кремовый фон */
 }
 
-/* ФОН С КРАСИВЫМИ ПЯТНАМИ */
 body {
   background-color: var(--color-talant-bg);
   color: var(--color-talant-dark);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  /* Узор из точек */
-  background-image: radial-gradient(rgba(123, 211, 137, 0.2) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(139, 90, 43, 0.1) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
-/* Плавающие цветные пятна на фоне (псевдоэлементы для body) */
 body::before,
 body::after {
   content: "";
   position: fixed;
   border-radius: 50%;
   filter: blur(100px);
-  z-index: -1;
+  z-index: -1; 
   opacity: 0.4;
   pointer-events: none;
 }
@@ -65,41 +61,41 @@ h1, h2, h3, h4 {
   font-weight: 700;
 }
 
-/* МАГИЯ ДЛЯ АБЗАЦЕВ */
 .text-paragraphs {
   white-space: pre-wrap;
   line-height: 1.8;
 }
 
-/* --- ЛЮКС СТИЛИ --- */
-
+/* Новый стиль заголовков (по центру, без эмодзи) */
 .title-lux {
-  background: linear-gradient(135deg, #2b2d42 0%, #7BD389 100%);
+  background: linear-gradient(135deg, #3E2723 0%, #8B5A2B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  display: inline-block;
+  display: block;
+  text-align: center; /* Выравнивание по центру */
   position: relative;
+  margin-bottom: 2rem;
 }
 
 .title-lux::after {
   content: '';
   position: absolute;
-  bottom: -8px;
-  left: 0;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 60px;
   height: 4px;
   background: #FFD166;
   border-radius: 2px;
 }
 
-/* Эффект стекла для карточек (стал еще более выраженным) */
 .glass-card {
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  border: 1px solid rgba(139, 90, 43, 0.1); /* Легкая коричневая рамка */
+  box-shadow: 0 8px 32px 0 rgba(139, 90, 43, 0.05);
 }
 
 .btn-lux {
@@ -119,15 +115,7 @@ h1, h2, h3, h4 {
 }
 .btn-lux:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(123, 211, 137, 0.4);
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-up {
-  animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  box-shadow: 0 10px 25px rgba(139, 90, 43, 0.2);
 }
 
 @keyframes popIn {
@@ -141,6 +129,3 @@ h1, h2, h3, h4 {
   50% { transform: translateY(-10px); }
 }
 .animate-float { animation: float 3s ease-in-out infinite; }
-
-.hide-scrollbar::-webkit-scrollbar { display: none; }
-.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

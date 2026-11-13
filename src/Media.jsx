@@ -16,15 +16,12 @@ export default function Media() {
 
   return (
     <section className="py-12">
-      <h2 className="text-3xl md:text-4xl font-black title-lux mb-10">
-        <span className="mr-3">🎬</span> Медиагалерея
-      </h2>
+      <h2 className="text-3xl md:text-4xl font-black title-lux">Медиагалерея</h2>
       
       {loading ? (
         <div className="text-center py-10 text-gray-400 font-bold">Загрузка...</div>
       ) : items.length === 0 ? (
         <div className="bg-white p-10 rounded-3xl border-2 border-dashed border-gray-200 text-center">
-          <span className="text-5xl block mb-4">🎬</span>
           <p className="text-gray-400 font-bold">Видео и фото скоро появятся.</p>
         </div>
       ) : (
@@ -43,7 +40,7 @@ export default function Media() {
                   <video src={item.url} controls className="w-full h-full object-cover" preload="metadata" />
                 )}
               </div>
-              <div className="p-2 md:p-4 bg-white/50 text-center border-t border-gray-50">
+              <div className="p-2 md:p-4 bg-white/50 text-center border-t border-talant-brown/10">
                 <h3 className="font-black text-[10px] md:text-sm text-talant-dark line-clamp-2">{item.title}</h3>
               </div>
             </div>
