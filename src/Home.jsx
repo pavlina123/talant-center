@@ -1,6 +1,6 @@
 import React from 'react';
 import { waLink } from './theme';
-import heroVideo from './assets/heroo.mp4';
+import heroImage from './assets/hero.jpeg'; // <--- Твоя картинка
 
 import Activities from './Activities';
 import Announcements from './Announcements';
@@ -58,17 +58,20 @@ export default function Home({ onOpenMember, onOpenAnnouncement, onOpenPrice }) 
                 Записаться на консультацию
               </a>
               
-              {/* Кнопка-якорь для прокрутки вниз */}
               <a href="#prices" className="btn-lux bg-talant-yellow text-talant-dark px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all text-center">
                 Узнать о занятиях
               </a>
             </div>
           </div>
 
-          {/* Видео */}
+          {/* ФОТО ВМЕСТО ВИДЕО */}
           <div className="order-1 md:order-2 flex justify-center">
-            <div className="relative w-full max-w-sm md:max-w-md aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50 bg-gray-100/50 backdrop-blur-sm">
-              <video src={heroVideo} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+            <div className="relative w-full max-w-sm md:max-w-md aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50 bg-gray-100">
+              <img 
+                src={heroImage} 
+                alt="Центр Талант" 
+                className="w-full h-full object-cover" 
+              />
             </div>
           </div>
         </div>
@@ -84,7 +87,6 @@ export default function Home({ onOpenMember, onOpenAnnouncement, onOpenPrice }) 
           <div className="max-w-6xl mx-auto px-4"><Team onOpenMember={onOpenMember} /></div>
         </div>
 
-        {/* Секция с ценами и ID для прокрутки */}
         <div id="prices" className="bg-white/30 backdrop-blur-sm border-y border-talant-brown/5 py-8 scroll-mt-24">
           <div className="max-w-6xl mx-auto px-4"><Prices onOpenPrice={onOpenPrice} /></div>
         </div>
