@@ -14,11 +14,50 @@
   --color-talant-purple: #CDB4DB;
 }
 
+/* ФОН С КРАСИВЫМИ ПЯТНАМИ */
 body {
   background-color: var(--color-talant-bg);
   color: var(--color-talant-dark);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  /* Узор из точек */
+  background-image: radial-gradient(rgba(123, 211, 137, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Плавающие цветные пятна на фоне (псевдоэлементы для body) */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+body::before {
+  width: 500px;
+  height: 500px;
+  background: var(--color-talant-yellow);
+  top: -150px;
+  right: -150px;
+  animation: floatBg 10s infinite alternate ease-in-out;
+}
+
+body::after {
+  width: 400px;
+  height: 400px;
+  background: var(--color-talant-green);
+  bottom: -100px;
+  left: -100px;
+  animation: floatBg 12s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes floatBg {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(50px, 50px) scale(1.1); }
 }
 
 h1, h2, h3, h4 {
@@ -34,7 +73,6 @@ h1, h2, h3, h4 {
 
 /* --- ЛЮКС СТИЛИ --- */
 
-/* Красивый градиентный заголовок */
 .title-lux {
   background: linear-gradient(135deg, #2b2d42 0%, #7BD389 100%);
   -webkit-background-clip: text;
@@ -44,7 +82,6 @@ h1, h2, h3, h4 {
   position: relative;
 }
 
-/* Декоративная линия под заголовком */
 .title-lux::after {
   content: '';
   position: absolute;
@@ -56,15 +93,15 @@ h1, h2, h3, h4 {
   border-radius: 2px;
 }
 
-/* Эффект стекла для карточек */
+/* Эффект стекла для карточек (стал еще более выраженным) */
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
 }
 
-/* Светящаяся кнопка */
 .btn-lux {
   position: relative;
   overflow: hidden;
@@ -85,7 +122,6 @@ h1, h2, h3, h4 {
   box-shadow: 0 10px 25px rgba(123, 211, 137, 0.4);
 }
 
-/* Анимации появления */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -106,6 +142,5 @@ h1, h2, h3, h4 {
 }
 .animate-float { animation: float 3s ease-in-out infinite; }
 
-/* Скрываем скроллбар */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
