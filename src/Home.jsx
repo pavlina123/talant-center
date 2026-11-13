@@ -2,7 +2,7 @@ import React from 'react';
 import { waLink } from './theme';
 import heroVideo from './assets/heroo.mp4';
 
-import Activities from './Activities'; // <--- Импортируем новую секцию
+import Activities from './Activities';
 import Announcements from './Announcements';
 import Achievements from './Achievements';
 import Team from './Team';
@@ -12,10 +12,10 @@ import Media from './Media';
 
 export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onOpenPrice }) {
   return (
-    <div className="min-h-[85vh] flex flex-col items-center justify-start px-4 py-10 relative bg-transparent z-10">
+    <div className="min-h-[85vh] flex flex-col items-center justify-start relative bg-transparent z-10">
       
       {/* HERO SECTION (Видео и кнопки) */}
-      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10 mb-12">
+      <section className="w-full max-w-6xl mx-auto px-4 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
         <div className="text-center md:text-left order-2 md:order-1">
           <h1 className="text-4xl md:text-5xl font-black text-talant-dark mb-4 leading-tight">
             Раскрываем таланты <br/>
@@ -38,21 +38,60 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
             <video src={heroVideo} autoPlay loop muted playsInline className="w-full h-full object-cover" />
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* СЕКЦИИ */}
-      <div className="w-full max-w-6xl mx-auto space-y-12 pb-20">
-        {/* ВСТАВЛЯЕМ НАШИ НАПРАВЛЕНИЯ ПЕРЕД ОБЪЯВЛЕНИЯМИ */}
-        <Activities /> 
-        
-        <Announcements onOpenAnnouncement={onOpenAnnouncement} />
-        <Achievements />
-        <Team onOpenMember={onOpenMember} />
-        <Prices onOpenPrice={onOpenPrice} />
-        <Reviews />
-        <Media />
-      </div>
+      {/* ОСНОВНЫЕ СЕКЦИИ (с чередованием фона) */}
+      <div className="w-full">
+        {/* Секция 1: Чем занимаемся (светлый фон) */}
+        <div className="bg-white/30 backdrop-blur-sm border-y border-talant-brown/5 py-8">
+          <div className="max-w-6xl mx-auto px-4">
+            <Activities />
+          </div>
+        </div>
 
+        {/* Секция 2: Коллектив (прозрачный фон) */}
+        <div className="py-8">
+          <div className="max-w-6xl mx-auto px-4">
+            <Team onOpenMember={onOpenMember} />
+          </div>
+        </div>
+
+        {/* Секция 3: Услуги и цены (светлый фон) */}
+        <div className="bg-white/30 backdrop-blur-sm border-y border-talant-brown/5 py-8">
+          <div className="max-w-6xl mx-auto px-4">
+            <Prices onOpenPrice={onOpenPrice} />
+          </div>
+        </div>
+
+        {/* Секция 4: Достижения (прозрачный фон) */}
+        <div className="py-8">
+          <div className="max-w-6xl mx-auto px-4">
+            <Achievements />
+          </div>
+        </div>
+
+        {/* Секция 5: Объявления (светлый фон) */}
+        <div className="bg-white/30 backdrop-blur-sm border-y border-talant-brown/5 py-8">
+          <div className="max-w-6xl mx-auto px-4">
+            <Announcements onOpenAnnouncement={onOpenAnnouncement} />
+          </div>
+        </div>
+
+        {/* Секция 6: Отзывы (прозрачный фон) */}
+        <div className="py-8">
+          <div className="max-w-6xl mx-auto px-4">
+            <Reviews />
+          </div>
+        </div>
+
+        {/* Секция 7: Медиагалерея (светлый фон) */}
+        <div className="bg-white/30 backdrop-blur-sm border-y border-talant-brown/5 py-8">
+          <div className="max-w-6xl mx-auto px-4">
+            <Media />
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 }
