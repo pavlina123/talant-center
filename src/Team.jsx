@@ -16,7 +16,9 @@ export default function Team({ onOpenMember }) {
 
   return (
     <section className="py-12">
-      <h2 className="text-3xl font-black text-talant-dark mb-8">Наш коллектив</h2>
+      <h2 className="text-3xl md:text-4xl font-black title-lux mb-10">
+        <span className="mr-3">👨‍🏫</span> Наш коллектив
+      </h2>
       
       {loading ? (
         <div className="text-center py-10 text-gray-400 font-bold">Загрузка...</div>
@@ -31,10 +33,8 @@ export default function Team({ onOpenMember }) {
             <div 
               key={item.id} 
               onClick={() => onOpenMember(item)} 
-              className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col"
+              className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col glass-card"
             >
-              
-              {/* Длинное прямоугольное фото сверху */}
               <div className="relative w-full aspect-[3/4] bg-talant-bg overflow-hidden">
                 {item.photo ? (
                   <img src={item.photo} alt={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-500" />
@@ -43,8 +43,7 @@ export default function Team({ onOpenMember }) {
                 )}
               </div>
 
-              {/* Текст и кнопка снизу */}
-              <div className="p-3 md:p-4 flex flex-col flex-1 justify-between bg-white text-center">
+              <div className="p-3 md:p-4 flex flex-col flex-1 justify-between bg-white/50 text-center">
                 <div>
                   <h3 className="font-black text-sm md:text-base text-talant-dark leading-tight mb-1">{item.name}</h3>
                   <p className="text-xs text-talant-green font-bold mb-3">{item.role}</p>

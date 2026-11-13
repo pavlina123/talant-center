@@ -18,6 +18,7 @@ body {
   background-color: var(--color-talant-bg);
   color: var(--color-talant-dark);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -25,10 +26,72 @@ h1, h2, h3, h4 {
   font-weight: 700;
 }
 
-/* МАГИЯ ДЛЯ АБЗАЦЕВ (текст будет как ты ввела) */
+/* МАГИЯ ДЛЯ АБЗАЦЕВ */
 .text-paragraphs {
   white-space: pre-wrap;
   line-height: 1.8;
+}
+
+/* --- ЛЮКС СТИЛИ --- */
+
+/* Красивый градиентный заголовок */
+.title-lux {
+  background: linear-gradient(135deg, #2b2d42 0%, #7BD389 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  position: relative;
+}
+
+/* Декоративная линия под заголовком */
+.title-lux::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: #FFD166;
+  border-radius: 2px;
+}
+
+/* Эффект стекла для карточек */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+/* Светящаяся кнопка */
+.btn-lux {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.btn-lux::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+}
+.btn-lux:hover::before {
+  left: 100%;
+}
+.btn-lux:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(123, 211, 137, 0.4);
+}
+
+/* Анимации появления */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 @keyframes popIn {
@@ -43,5 +106,6 @@ h1, h2, h3, h4 {
 }
 .animate-float { animation: float 3s ease-in-out infinite; }
 
+/* Скрываем скроллбар */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

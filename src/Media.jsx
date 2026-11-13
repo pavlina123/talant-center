@@ -16,8 +16,8 @@ export default function Media() {
 
   return (
     <section className="py-12">
-      <h2 className="text-3xl font-black text-talant-dark mb-8 flex items-center gap-3">
-        <span className="text-4xl">🎬</span> Медиа-галерея
+      <h2 className="text-3xl md:text-4xl font-black title-lux mb-10">
+        <span className="mr-3">🎬</span> Медиагалерея
       </h2>
       
       {loading ? (
@@ -30,9 +30,7 @@ export default function Media() {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
           {items.map(item => (
-            <div key={item.id} className="bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col group">
-              
-              {/* Длинная карточка (9:16) */}
+            <div key={item.id} className="glass-card rounded-2xl md:rounded-3xl overflow-hidden flex flex-col group">
               <div className="relative w-full aspect-[9/16] bg-talant-bg overflow-hidden">
                 {item.url.includes('youtube.com') || item.url.includes('youtu.be') ? (
                   <iframe 
@@ -42,17 +40,10 @@ export default function Media() {
                     title={item.title}
                   ></iframe>
                 ) : (
-                  <video 
-                    src={item.url} 
-                    controls 
-                    className="w-full h-full object-cover" 
-                    preload="metadata"
-                  />
+                  <video src={item.url} controls className="w-full h-full object-cover" preload="metadata" />
                 )}
               </div>
-
-              {/* Название снизу */}
-              <div className="p-2 md:p-4 bg-white text-center border-t border-gray-50">
+              <div className="p-2 md:p-4 bg-white/50 text-center border-t border-gray-50">
                 <h3 className="font-black text-[10px] md:text-sm text-talant-dark line-clamp-2">{item.title}</h3>
               </div>
             </div>
