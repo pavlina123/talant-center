@@ -1,6 +1,6 @@
 import React from 'react';
 import { waLink } from './theme';
-import logo from './assets/logo.png'; 
+import logo from './assets/logoo.png'; 
 
 export default function Header({ onLoginClick }) {
   return (
