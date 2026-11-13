@@ -2,6 +2,7 @@ import React from 'react';
 import { waLink } from './theme';
 import heroVideo from './assets/heroo.mp4';
 
+import Activities from './Activities'; // <--- Импортируем новую секцию
 import Announcements from './Announcements';
 import Achievements from './Achievements';
 import Team from './Team';
@@ -13,15 +14,15 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
   return (
     <div className="min-h-[85vh] flex flex-col items-center justify-start px-4 py-10 relative bg-transparent z-10">
       
-      {/* HERO SECTION */}
-      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10 mb-16">
+      {/* HERO SECTION (Видео и кнопки) */}
+      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10 mb-12">
         <div className="text-center md:text-left order-2 md:order-1">
           <h1 className="text-4xl md:text-5xl font-black text-talant-dark mb-4 leading-tight">
             Раскрываем таланты <br/>
             <span className="text-talant-green">в каждом ребенке</span>
           </h1>
           <p className="text-lg text-gray-600 mb-8 font-medium">
-            Центр развития "Талант" — это уютное место, где дети учат языки, занимаются актерским мастерством и раскрывают свои лучшие качества.
+            Детский центр "Талант" в Астане — это уютное место, где дети учат языки, занимаются творчеством и раскрывают свои лучшие качества.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <a href={waLink()} target="_blank" rel="noreferrer" className="btn-lux bg-talant-green text-white px-6 py-3.5 rounded-xl font-black text-base shadow-lg transition-all">
@@ -41,6 +42,9 @@ export default function Home({ onNavigate, onOpenMember, onOpenAnnouncement, onO
 
       {/* СЕКЦИИ */}
       <div className="w-full max-w-6xl mx-auto space-y-12 pb-20">
+        {/* ВСТАВЛЯЕМ НАШИ НАПРАВЛЕНИЯ ПЕРЕД ОБЪЯВЛЕНИЯМИ */}
+        <Activities /> 
+        
         <Announcements onOpenAnnouncement={onOpenAnnouncement} />
         <Achievements />
         <Team onOpenMember={onOpenMember} />
